@@ -11,11 +11,10 @@ interface List<T> {
 }
 
 fun main() {
-	assertContentEquals(
-		arrayOf(3, 4, 7, 9, 42, 69, 420), QuickSort(arrayOf(9, 3, 7, 4, 69, 420, 42))
-	)
+	quickSortTest()
 
 	queueTest()
+
 	listTest(DoublyLinkedList())
 
 	treeTest {
@@ -40,13 +39,25 @@ fun main() {
 	}
 
 	bstTest()
+
+	minHeapTest()
+}
+
+fun quickSortTest() {
+	assertContentEquals(
+		arrayOf(3, 4, 7, 9, 42, 69, 420), QuickSort(arrayOf(9, 3, 7, 4, 69, 420, 42))
+	)
 }
 
 fun bstTest() {
 	val other = BinarySearchTree(
 		TreeNode(
 			10,
-			left = TreeNode(5, left = TreeNode(1, right = TreeNode(2)), right = TreeNode(8, left = TreeNode(6), right = TreeNode(9))),
+			left = TreeNode(
+				5,
+				left = TreeNode(1, right = TreeNode(2)),
+				right = TreeNode(8, left = TreeNode(6), right = TreeNode(9))
+			),
 			right = TreeNode(20)
 		)
 	)
@@ -174,4 +185,31 @@ fun queueTest() {
 	assertEquals(9, queue.deque())
 	assertEquals(11, queue.deque())
 	assertEquals(0, queue.size)
+}
+
+fun minHeapTest() {
+	val heap = MinHeap()
+
+	assertEquals(heap.size, 0)
+
+	heap.insert(5)
+	heap.insert(3)
+	heap.insert(69)
+	heap.insert(420)
+	heap.insert(4)
+	heap.insert(1)
+	heap.insert(8)
+	heap.insert(7)
+
+	assertEquals(8, heap.size)
+	assertEquals(1, heap.delete())
+	assertEquals(3, heap.delete())
+	assertEquals(4, heap.delete())
+	assertEquals(5, heap.delete())
+	assertEquals(4, heap.size)
+	assertEquals(7, heap.delete())
+	assertEquals(8, heap.delete())
+	assertEquals(69, heap.delete())
+	assertEquals(420, heap.delete())
+	assertEquals(0, heap.size)
 }
