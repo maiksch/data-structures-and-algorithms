@@ -1,9 +1,9 @@
 class MinHeap {
 	var size: Int = 0
-	private var data = ArrayList<Int?>()
+	private var data = MyArrayList<Int>(8)
 
 	fun insert(value: Int) {
-		data.add(value)
+		data += value
 		heapifyUp(size)
 		size += 1
 	}
