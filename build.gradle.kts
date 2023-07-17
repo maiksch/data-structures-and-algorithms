@@ -9,4 +9,7 @@ dependencies { implementation(kotlin("test")) }
 
 application { mainClass.set("dsa.MainKt") }
 
-sourceSets { main { kotlin { srcDirs("src") } } }
+sourceSets {
+	test { kotlin { srcDirs("test") } }
+	main { kotlin { srcDirs("src") } }
+}

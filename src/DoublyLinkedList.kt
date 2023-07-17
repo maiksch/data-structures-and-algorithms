@@ -3,12 +3,12 @@ class ListNode<T>(val value: T) {
 	var prev: ListNode<T>? = null
 }
 
-class DoublyLinkedList<T> : List<T> {
-	override var size: Int = 0
+class DoublyLinkedList<T> {
+	var size: Int = 0
 	private var head: ListNode<T>? = null
 	private var tail: ListNode<T>? = null
 
-	override fun prepend(item: T) {
+	fun prepend(item: T) {
 		val node = ListNode(item)
 
 		size += 1
@@ -26,7 +26,7 @@ class DoublyLinkedList<T> : List<T> {
 
 	}
 
-	override fun append(item: T) {
+	fun append(item: T) {
 		val node = ListNode(item)
 
 		size += 1
@@ -43,7 +43,7 @@ class DoublyLinkedList<T> : List<T> {
 		}
 	}
 
-	override fun insertAt(item: T, idx: Int) {
+	fun insertAt(item: T, idx: Int) {
 		assert(idx in (0 until size))
 
 		if (idx == 0) {
@@ -68,7 +68,7 @@ class DoublyLinkedList<T> : List<T> {
 		size += 1
 	}
 
-	override fun remove(item: T): T? {
+	fun remove(item: T): T? {
 		var current = head
 		var idx = 0
 
@@ -95,7 +95,7 @@ class DoublyLinkedList<T> : List<T> {
 		return null
 	}
 
-	override fun removeAt(idx: Int): T? {
+	fun removeAt(idx: Int): T? {
 		assert(idx in (0 until size))
 
 		if (idx == 0 && size == 1) {
@@ -124,7 +124,7 @@ class DoublyLinkedList<T> : List<T> {
 		return current?.value
 	}
 
-	override fun get(idx: Int): T? {
+	fun get(idx: Int): T? {
 		assert(idx in (0 until size))
 
 		var current = head
