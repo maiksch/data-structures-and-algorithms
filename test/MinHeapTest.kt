@@ -4,7 +4,7 @@ import kotlin.test.assertEquals
 class MinHeapTest {
 	@Test
 	fun test() {
-		val heap = MinHeap()
+		val heap = MinHeap<Int>()
 
 		assertEquals( 0, heap.size)
 

@@ -1,8 +1,8 @@
-class MinHeap {
+class MinHeap<T> where T : Comparable<T> {
 	var size: Int = 0
-	private var data = MyArrayList<Int>(8)
+	private var data = MyArrayList<T>(8)
 
-	fun insert(value: Int) {
+	fun insert(value: T) {
 		data += value
 		heapifyUp(size)
 		size += 1
@@ -24,7 +24,7 @@ class MinHeap {
 		}
 	}
 
-	fun delete(): Int? {
+	fun delete(): T? {
 		val value = data[0] ?: return null
 
 		data[0] = data[size - 1]
@@ -44,20 +44,20 @@ class MinHeap {
 		}
 
 		val value = data[idx] ?: return
-		val right = data[rightIdx] ?: Int.MAX_VALUE
+		val right = data[rightIdx]
 		val left = data[leftIdx] ?: return
 
-		if (listOf(value, right, left).min() == value) {
+		if (value <= left && (right == null || value <= right)) {
 			return
 		}
 
-		if (left <= right) {
+		if (right == null || left <= right) {
 			data[idx] = left
 			data[leftIdx] = value
 			heapifyDown(leftIdx)
 		}
 
-		if (right < left) {
+		if (right != null && right < left) {
 			data[idx] = right
 			data[rightIdx] = value
 			heapifyDown(rightIdx)
