@@ -1,12 +1,12 @@
-class ListNode<T>(val value: T) {
+class ListNode<T>(var value: T) {
 	var next: ListNode<T>? = null
 	var prev: ListNode<T>? = null
 }
 
 class DoublyLinkedList<T> {
 	var size: Int = 0
-	private var head: ListNode<T>? = null
-	private var tail: ListNode<T>? = null
+	var head: ListNode<T>? = null
+	var tail: ListNode<T>? = null
 
 	fun prepend(item: T) {
 		val node = ListNode(item)

@@ -1,8 +1,8 @@
-private class QueueNode<T>(val value: T, var next: QueueNode<T>? = null)
+class QueueNode<T>(var value: T, var next: QueueNode<T>? = null)
 
 class Queue<T>() {
-	private var head: QueueNode<T>? = null
-	private var tail: QueueNode<T>? = null
+	var head: QueueNode<T>? = null
+	var tail: QueueNode<T>? = null
 	var size: Int = 0
 
 	fun enqueue(item: T) {
